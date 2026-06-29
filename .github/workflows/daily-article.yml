@@ -1,0 +1,29 @@
+name: Daily Dropper Article
+
+on:
+  schedule:
+    - cron: '30 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  generate-article:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install anthropic
+      - name: Generate article
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/generate_article.py
+      - name: Commit and push
+        run: |
+          git config user.name "NeetDropper Bot"
+          git config user.email "bot@neetdropper.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Daily article: $(date +%Y-%m-%d)"
+          git push
