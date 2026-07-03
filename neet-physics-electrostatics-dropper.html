@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Electrostatics in 2 weeks with NEET dropper-specific strategies. Coulomb's Law to Capacitors with time-bound revision plan.">
+    <title>Electrostatics for NEET Droppers: From Coulomb to Capacitors in 2 Weeks | NeetDropper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: #0C1B33;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #E8A020;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #E8A020;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #0C1B33 0%, #1a2f4a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #E8A020;
+        }
+        
+        .hero .meta {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        article {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        h2 {
+            color: #0C1B33;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #E8A020;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #0C1B33;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.6rem;
+        }
+        
+        .highlight-box {
+            background-color: #FFF6E0;
+            border-left: 4px solid #E8A020;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box strong {
+            color: #0C1B33;
+        }
+        
+        .cta-box {
+            background-color: #0C1B33;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+        
+        .cta-box h3 {
+            color: #E8A020;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-box p {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #E8A020;
+            color: #0C1B33;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #d4911a;
+        }
+        
+        footer {
+            background-color: #0C1B33;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        footer a {
+            color: #E8A020;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            margin: 0 1rem;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">NeetDropper</div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/neet-dropper-complete-guide.html">Complete Guide</a></li>
+                <li><a href="/best-coaching-for-droppers.html">Best Coaching</a></li>
+                <li><a href="https://neet.padhle.in">Padhle</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Electrostatics for NEET Droppers: From Coulomb to Capacitors in 2 Weeks</h1>
+            <p>Intensive revision strategy for Physics Chapter 1</p>
+            <div class="meta">Published on July 03, 2026 | Physics | For NEET Droppers</div>
+        </div>
+    </section>
+    
+    <main>
+        <article>
+            <p>As a NEET dropper, electrostatics is your foundation. You cannot skip this chapter—it directly connects to current electricity, magnetism, and electromagnetic induction. The good news? You can master electrostatics in just 2 weeks with a strategic, focused approach. This guide gives you a day-by-day revision framework that prioritizes high-weightage concepts and common NEET mistakes.</p>
+            
+            <h2>Week 1: Core Concepts and Problem Solving (Days 1-7)</h2>
+            
+            <h3>Days 1-2: Coulomb's Law and Electric Field</h3>
+            <p>Start with the foundation. Coulomb's Law (F = kq₁q₂/r²) appears in 4-5 questions every NEET exam. As a dropper, you've likely seen this before—now focus on the nuances.</p>
+            
+            <p><strong>What droppers often miss:</strong> They memorize the formula but struggle with superposition in multi-charge systems. Spend 2 hours solving problems where you find the net force on a charge surrounded by 3+ other charges. Practice using vector addition, not just scalar addition.</p>
+            
+            <p><strong>Daily target:</strong> Solve 15 problems combining Coulomb's Law with geometry. Do 5 easy, 7 medium, and 3 hard questions. Use previous NEET papers—they're the best resource. Focus on problems involving equilateral triangles, squares, and linear arrangements.</p>
+            
+            <p>For electric field (E = F/q), practice the concept that field represents force per unit charge. Solve 10 problems on finding field due to point charges and field lines. Understand that E-field lines never cross, and field strength is proportional to line density.</p>
+            
+            <h3>Days 3-4: Gauss's Law and Symmetry</h3>
+            <p>Gauss's Law (∮E·dA = Q_enclosed/ε₀) is powerful but conceptually tricky. Droppers often apply it incorrectly because they don't choose the right Gaussian surface.</p>
+            
+            <div class="highlight-box">
+                <strong>Dropper Strategy:</strong> Learn 5 standard geometries: spherical (point/uniform sphere), cylindrical (infinite wire/cylinder), and planar (infinite sheet). For each, practice deriving E in 3 minutes. NEET questions almost always use these symmetric cases.
+            </div>
+            
+            <p>Spend Day 3 on theory and derivation. Understand why Gaussian surfaces work—it's about exploiting symmetry. Spend Day 4 solving 12 problems: 4 on spherical symmetry, 4 on cylindrical, 4 on planar.</p>
+            
+            <h3>Days 5-7: Electric Potential and Potential Energy</h3>
+            <p>Electric potential (V = U/q) confuses many droppers because they mix it with kinetic energy concepts. Remember: potential is scalar, field is vector.</p>
+            
+            <p><strong>Critical formula:</strong> Work done by external force = q(V_f - V_i). This is tested heavily. Practice 8 problems on moving charges between different potentials. Include problems where you calculate potential at a point due to multiple charges and then find work.</p>
+            
+            <p>Understand equipotential surfaces: they're perpendicular to field lines, no work is done moving a charge on an equipotential, and they're closer together where field is stronger. Solve 5 problems identifying equipotential shapes (spherical for point charge, cylindrical for line charge).</p>
+            
+            <p>End Week 1 by solving 3 mixed problems that combine Coulomb, field, and potential concepts. These teach you how NEET integrates topics.</p>
+            
+            <h2>Week 2: Capacitors, Dielectrics, and Full Integration (Days 8-14)</h2>
+            
+            <h3>Days 8-10: Capacitance and Capacitor Combinations</h3>
+            <p>Capacitance (C = Q/V) is straightforward formula-wise but demands practice with different geometries. Parallel plate capacitor: C = ε₀εᵣA/d. This formula alone appears in 2-3 NEET questions every year.</p>
+            
+            <p><strong>Day 8 focus:</strong> Solve 6 problems on parallel plate, cylindrical, and spherical capacitors. Derive the formulas—don't just memorize. Understanding derivation helps you handle variations (e.g., partially filled dielectric).</p>
+            
+            <p><strong>Day 9 focus:</strong> Series and parallel combinations. Series: 1/C_eq = 1/C₁ + 1/C₂. Parallel: C_eq = C₁ + C₂. Droppers often mix these up. Solve 10 combination problems, including 3 where you must find charge distribution or potential difference across individual capacitors.</p>
+            
+            <p><strong>Day 10 focus:</strong> Energy storage in capacitors (U = ½CV² = ½QV = Q²/2C). This is tested every year. Solve 8 problems on energy, including scenarios where capacitors are charged, isolated, or connected to batteries. Problems often ask: "If a dielectric is inserted while capacitor is isolated, what changes?" Know your answers cold.</p>
+            
+            <h3>Days 11-12: Dielectrics and Field Inside Materials</h3>
+            <p>Dielectrics are where droppers lose marks because they don't visualize polarization. When you insert a dielectric, the field inside reduces to E = E₀/εᵣ (in linear dielectrics). Practice drawing polarization: molecules align, creating a counterfield.</p>
+            
+            <p><strong>Day 11:</strong> Solve 5 problems on dielectric constant, polarization, and bound charge. Understand: total field = external field + induced field. Then solve 4 problems on capacitance change when dielectric is partially or fully inserted—NEET loves these.</p>
+            
+            <p><strong>Day 12:</strong> Solve 6 complex problems mixing capacitors, dielectrics, and energy. Example: "A parallel plate capacitor with dielectric is connected to a battery. If the dielectric is removed, find change in energy, charge, and potential difference." These integrate multiple concepts.</p>
+            
+            <h3>Days 13-14: Revision and NEET-Style Mixed Problems</h3>
+            <p>Day 13: Solve 10 problems from last 5 NEET papers on electrostatics. These are your actual test questions. Time yourself—aim for 1 problem in 2 minutes for easy, 3 minutes for medium, 4 minutes for hard.</p>
+            
+            <p><strong>Common NEET patterns to master:</strong></p>
+            <ul>
+                <li>Coulomb + potential: Two charges, find work to move a third charge</li>
+                <li>Gauss + Coulomb: Comparing field inside and outside a sphere</li>
+                <li>Capacitor + dielectric: Capacitance change with energy calculations</li>
+                <li>Series-parallel combinations: With batteries, asking for charge on specific capacitor</li>
+            </ul>
+            
+            <p>Day 14: Full 45-minute mock test—4 electrostatics questions timed like actual NEET. Review immediately. If you score below 3/4, redo Days 11-12 concepts.</p>
+            
+            <div class="highlight-box">
+                <strong>Dropper Golden Rule:</strong> Electrostatics has only 5-6 unique problem types, repeated with different numbers. Once you recognize the type, the solution becomes mechanical. Your 2-week goal is pattern recognition, not memorization.
+            </div>
+            
+            <h2>High-Yield Formulas You Must Know Instantly</h2>
+            
+            <p>By the end of 2 weeks, these should be reflex knowledge:</p>
+            
+            <ul>
+                <li>Coulomb: F = kq₁q₂/r² (k = 9×10⁹ N·m²/C²)</li>
+                <li>Electric field: E = F/q, E = kQ/r²</li>
+                <li>Potential: V = U/q = kQ/r, V = ∫E·dr</li>
+                <li>Capacitance: C = Q/V, parallel plate: C = ε₀εᵣA/d</li>
+                <li>Energy: U = ½CV² =
