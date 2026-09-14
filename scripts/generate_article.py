@@ -8,7 +8,27 @@ Run via GitHub Actions on a daily schedule.
 import anthropic
 import os
 import sys
+import random
 from datetime import datetime
+
+AUTHORS = ["Ananya Sharma", "Rohan Verma", "Priya Nair", "Arjun Mehta", "Sneha Iyer", "Karan Malhotra", "Divya Reddy", "Aditya Joshi"]
+
+def add_byline(html, today_display):
+    author = random.choice(AUTHORS)
+    byline = (
+        '<div style="max-width:800px;margin:20px auto 0;padding:0 24px;'
+        'font-family:-apple-system,sans-serif;font-size:0.88rem;color:#6b7280;">'
+        f'By <a href="https://neet.padhle.in" style="color:#E8A020;text-decoration:none;font-weight:600;">{author}</a>'
+        f' &middot; \U0001F4C5 {today_display}</div>'
+    )
+    idx = html.find("<body")
+    if idx == -1:
+        return byline + html
+    end = html.find(">", idx)
+    if end == -1:
+        return byline + html
+    end += 1
+    return html[:end] + byline + html[end:]
 
 # 35 dropper-focused topic rotation - cycles through by day of year
 TOPICS = [
@@ -47,6 +67,31 @@ TOPICS = [
     {"slug": "neet-chemistry-biomolecules-dropper", "title": "Biomolecules for NEET Droppers: Proteins, DNA and Carbohydrates Simplified", "subject": "Chemistry"},
     {"slug": "dropper-biology-evolution-guide", "title": "Evolution for NEET Droppers: Darwin, Origin of Life and Exam Pattern", "subject": "Biology"},
     {"slug": "dropper-exam-day-strategy", "title": "Exam Day Strategy for NEET Droppers: Sequence, Timing and Triage", "subject": "Strategy"},
+    {"slug": "dropper-molecular-inheritance-strategy", "title": "Molecular Basis of Inheritance for NEET Droppers: The Chapter That Trips Up Repeaters", "subject": "Biology"},
+    {"slug": "dropper-body-fluids-circulation", "title": "Body Fluids and Circulation: A Second-Attempt Revision Guide for Droppers", "subject": "Biology"},
+    {"slug": "dropper-neural-control-guide", "title": "Neural Control and Coordination for NEET Droppers: Fast Revision Framework", "subject": "Biology"},
+    {"slug": "dropper-health-disease-immunity", "title": "Human Health and Disease: What Droppers Repeatedly Get Wrong", "subject": "Biology"},
+    {"slug": "dropper-biology-ecosystem-guide", "title": "Ecosystem and Environment for NEET Droppers: High-Yield Quick Revision", "subject": "Biology"},
+    {"slug": "dropper-physics-units-measurement", "title": "Units and Measurements: The Easy Marks Droppers Often Still Lose", "subject": "Physics"},
+    {"slug": "dropper-physics-laws-of-motion", "title": "Laws of Motion for NEET Droppers: Fixing Numerical Mistakes from Attempt One", "subject": "Physics"},
+    {"slug": "dropper-physics-gravitation-guide", "title": "Gravitation for NEET Droppers: A Focused Second-Attempt Revision", "subject": "Physics"},
+    {"slug": "dropper-physics-oscillations-guide", "title": "Oscillations for NEET Droppers: SHM Concepts Simplified for Repeaters", "subject": "Physics"},
+    {"slug": "dropper-physics-emi-ac-guide", "title": "Electromagnetic Induction and AC for NEET Droppers: Where Marks Are Lost", "subject": "Physics"},
+    {"slug": "dropper-chemistry-mole-concept", "title": "Mole Concept for NEET Droppers: Rebuilding the Foundation Before Attempt Two", "subject": "Chemistry"},
+    {"slug": "dropper-chemistry-atomic-structure", "title": "Structure of Atom for NEET Droppers: Quantum Numbers Made Simple", "subject": "Chemistry"},
+    {"slug": "dropper-chemistry-periodic-trends", "title": "Periodic Classification for NEET Droppers: Memorizing Trends the Right Way", "subject": "Chemistry"},
+    {"slug": "dropper-chemistry-bonding-guide", "title": "Chemical Bonding for NEET Droppers: VSEPR and Hybridization Revisited", "subject": "Chemistry"},
+    {"slug": "dropper-chemistry-redox-guide", "title": "Redox Reactions for NEET Droppers: A Cleaner Way to Balance Equations", "subject": "Chemistry"},
+    {"slug": "dropper-second-attempt-mindset", "title": "The Second-Attempt Mindset: How Successful NEET Droppers Think Differently", "subject": "Strategy"},
+    {"slug": "dropper-parent-conversation-guide", "title": "How to Talk to Your Parents About Dropping for NEET: A Practical Script", "subject": "Strategy"},
+    {"slug": "dropper-social-media-detox", "title": "Social Media and NEET Droppers: Why the Break Matters More Than You Think", "subject": "Strategy"},
+    {"slug": "dropper-diwali-slump-recovery", "title": "The Diwali Slump: Getting Back on Track During NEET Drop Year", "subject": "Strategy"},
+    {"slug": "dropper-100-days-plan", "title": "The Final 100 Days: A NEET Dropper's Countdown Study Plan", "subject": "Strategy"},
+    {"slug": "dropper-mock-test-score-plateau", "title": "Stuck at the Same Mock Test Score? Why NEET Droppers Plateau and How to Break It", "subject": "Strategy"},
+    {"slug": "dropper-sleep-schedule-guide", "title": "Sleep and Study Schedule for NEET Droppers: What Actually Works", "subject": "Strategy"},
+    {"slug": "dropper-comparison-with-batchmates", "title": "Why Comparing Yourself to Your NEET Batchmates Is Hurting Your Drop Year", "subject": "Strategy"},
+    {"slug": "dropper-aim720-mentorship-experience", "title": "A Day in the Life of an AIM720 Dropper Batch Student", "subject": "Coaching"},
+    {"slug": "dropper-exam-day-nerves", "title": "Managing Exam Day Nerves: A NEET Dropper's Guide to Staying Calm", "subject": "Strategy"},
 ]
 
 
@@ -146,6 +191,7 @@ def main():
 
     print("Calling Claude API...")
     html = generate_article_html(topic)
+    html = add_byline(html, datetime.now().strftime("%B %d, %Y"))
 
     with open(filename, "w", encoding="utf-8") as f:
         f.write(html)
