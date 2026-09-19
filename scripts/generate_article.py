@@ -11,6 +11,12 @@ import sys
 import random
 from datetime import datetime
 
+sys.path.insert(0, os.path.dirname(__file__))
+import seo_utils as su
+
+DOMAIN = "neetdropper.com"
+SITE_NAME = "NEETDropper"
+
 AUTHORS = ["Ananya Sharma", "Rohan Verma", "Priya Nair", "Arjun Mehta", "Sneha Iyer", "Karan Malhotra", "Divya Reddy", "Aditya Joshi"]
 
 def add_byline(html, today_display):
@@ -144,34 +150,6 @@ def generate_article_html(topic):
     return html.strip()
 
 
-def update_sitemap(slug, today_str):
-    path = "sitemap.xml"
-    if not os.path.exists(path):
-        print("sitemap.xml not found, skipping update.")
-        return
-
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    if "/" + slug + ".html" in content:
-        print("sitemap.xml already contains " + slug + ", skipping.")
-        return
-
-    entry = (
-        "  <url>\n"
-        "    <loc>https://neetdropper.com/" + slug + ".html</loc>\n"
-        "    <lastmod>" + today_str + "</lastmod>\n"
-        "    <changefreq>monthly</changefreq>\n"
-        "    <priority>0.75</priority>\n"
-        "  </url>"
-    )
-
-    content = content.replace("</urlset>", entry + "\n</urlset>")
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(content)
-    print("sitemap.xml updated with " + slug)
-
-
 def main():
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
@@ -193,12 +171,21 @@ def main():
     html = generate_article_html(topic)
     html = add_byline(html, datetime.now().strftime("%B %d, %Y"))
 
+    url = f"https://{DOMAIN}/{filename}"
+    title = topic["title"]
+    description = su.extract_description(html, title)
+
+    tagged_html = su.publish_article(
+        article_html=html, site_name=SITE_NAME, domain=DOMAIN,
+        canonical_url=url, title=title, description=description,
+        date_iso=today_str, category=topic["subject"],
+    )
+
     with open(filename, "w", encoding="utf-8") as f:
-        f.write(html)
+        f.write(tagged_html)
 
-    print("Saved " + filename + " (" + str(len(html)) + " bytes)")
-
-    update_sitemap(topic["slug"], today_str)
+    print("Saved " + filename + " (" + str(len(tagged_html)) + " bytes)")
+    print("SEO tags injected, manifest/sitemap/homepage/archive rebuilt")
     print("Done!")
 
 
