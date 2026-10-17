@@ -6,6 +6,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://neetdropper.com/dropper-chemistry-redox-guide.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://neetdropper.com/dropper-chemistry-bonding-guide.html</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -360,8 +366,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://neetdropper.com/dropper-chemistry-redox-guide.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <loc>https://neetdropper.com/dropper-second-attempt-mindset.html</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
